@@ -1,0 +1,32 @@
+/* Main App Styles */
+.App {
+  text-align: left;
+}
+
+/* Ensure proper spacing with fixed header */
+main {
+  padding-top: 0; /* Header handles its own spacing */
+}
+
+/* Smooth scroll behavior for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
