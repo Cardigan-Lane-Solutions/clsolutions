@@ -39,8 +39,8 @@ const About: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary-900 mb-6">
             About{' '}
-            <span className="bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
-              Cardigan Lane Solutions
+            <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+                {brandConfig.company.name}
             </span>
           </h2>
           <p className="text-lg md:text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">

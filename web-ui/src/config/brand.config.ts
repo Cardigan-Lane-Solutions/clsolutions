@@ -113,8 +113,8 @@ export interface BrandConfig {
 export const brandConfig: BrandConfig = {
   company: {
     name: "Cardigan Lane Solutions",
-    tagline: "Innovative Technology Solutions",
-    description: "We deliver cutting-edge technology solutions that drive business transformation and digital innovation."
+    tagline: "Solving Unique Problems with Elegant Solutions",
+    description: "Digital Transformation Experts",
   },
   
   colors: {

@@ -30,3 +30,52 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* Mobile Navigation Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.3s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-1 {
+  animation-delay: 50ms;
+}
+
+.animate-fade-in-up-delay-2 {
+  animation-delay: 100ms;
+}
+
+.animate-fade-in-up-delay-3 {
+  animation-delay: 150ms;
+}
+
+.animate-fade-in-up-delay-4 {
+  animation-delay: 200ms;
+}
+
+.animate-fade-in-up-delay-5 {
+  animation-delay: 250ms;
+}
+
+/* Mobile menu slide animation */
+.mobile-menu-enter {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+
+.mobile-menu-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 0.3s ease-out;
+}
