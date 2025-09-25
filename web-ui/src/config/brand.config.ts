@@ -1,15 +1,85 @@
 // Brand Configuration for Cardigan Lane Solutions
 // This file centralizes all brand-related design tokens for easy customization
-
+//
+// Contains:
+// - Company information (name, tagline, description, mission)
+// - Features and testimonials
+// - Products and services data
+// - Contact information including social media
+// - Color palettes (primary, secondary, accent, neutral)
+// - Typography settings
+// - Spacing and asset configurations
+//
 // Note: Images in the public folder should be referenced using PUBLIC_URL for proper deployment
 const logo = `${process.env.PUBLIC_URL}/cls-logo.svg`;
 const backgroundImage = `${process.env.PUBLIC_URL}/port-erin-background.jpg`;
+
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface Testimonial {
+  logo: string;
+  quote: string;
+  company: string;
+  author: string;
+  action?: {
+    text: string;
+    href: string;
+  }
+}
+
+interface Product {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  features: string[];
+  icon: string;
+  color: string;
+  badge?: string;
+  comingSoon?: boolean;
+}
+
+interface Service {
+  icon: string;
+  title: string;
+  description: string;
+  features: string[];
+  color: string;
+}
+
+interface ContactInfo {
+  email: string;
+  phone?: string;
+  address?: {
+    street: string;
+    city: string;
+    state: string;
+    zip: string;
+    country: string;
+  };
+  socialMedia?: {
+    linkedin?: string;
+    twitter?: string;
+    github?: string;
+  };
+}
 
 export interface BrandConfig {
   company: {
     name: string;
     tagline: string;
     description: string;
+    longDescription: string;
+    features?: Feature[];
+    mission?: string;
+    testimonials?: Testimonial[];
+    products?: Product[];
+    services?: Service[];
+    contact?: ContactInfo;
   };
   colors: {
     primary: {
@@ -115,8 +185,201 @@ export const brandConfig: BrandConfig = {
     name: "Cardigan Lane Solutions",
     tagline: "Solving Unique Problems with Elegant Solutions",
     description: "Digital Transformation Experts",
+    longDescription: "We are a forward-thinking technology company dedicated to transforming businesses through innovative digital solutions. Our expertise spans across modern web technologies, cloud infrastructure, and strategic digital transformation.",
+    features: [
+      {
+        icon: '🤝',
+        title: 'Partnership Approach',
+        description: 'An extension of your team, ensuring seamless collaboration and communication.',
+      },
+      {
+        icon: '🚀',
+        title: 'Innovation First',
+        description: 'Leveraging cutting-edge technologies to deliver solutions that give you a competitive advantage.',
+      },
+      {
+        icon: '🎯',
+        title: 'Results Driven',
+        description: 'Our focus is on delivering measurable outcomes that directly impact your business growth.',
+      }
+    ],
+    mission: "To empower businesses with innovative technology solutions that drive growth, enhance efficiency, and create lasting competitive advantages in the digital landscape. We believe that great technology should be accessible, scalable, and transformative.",
+    testimonials: [
+      {
+        logo: `${process.env.PUBLIC_URL}/eip.webp`,
+        quote: "development development hmmmmmmmm",
+        company: "EIP Ltd.",
+        author: "John Doe, CTO"
+      },
+      {
+        logo: `${process.env.PUBLIC_URL}/rushen-silver-band.png`,
+        quote: "Website website wbsite hmmm",
+        company: "Rushen Silver Band",
+        author: "Jane Smith, Chairman",
+        action: {
+          text: "Visit Their Site",
+          href: "https://www.rushensilverband.com"
+        }
+      }
+    ],
+
+    products: [
+      {
+        id: "web-solutions",
+        name: "Web Solutions Suite",
+        tagline: "Modern web applications that scale",
+        description: "Complete web development solutions from concept to deployment, featuring cutting-edge technologies and responsive design.",
+        features: [
+          "React & TypeScript Applications",
+          "Progressive Web Apps (PWA)",
+          "E-commerce Platforms",
+          "Content Management Systems",
+          "API Development & Integration"
+        ],
+        icon: "🌐",
+        color: "from-blue-500 to-purple-600",
+        badge: "Popular"
+      },
+      {
+        id: "cloud-platform",
+        name: "Cloud Platform",
+        tagline: "Scalable infrastructure solutions",
+        description: "Enterprise-grade cloud infrastructure and DevOps solutions that grow with your business needs.",
+        features: [
+          "AWS & Azure Migration",
+          "Kubernetes Orchestration",
+          "CI/CD Pipeline Setup",
+          "Monitoring & Analytics",
+          "Security & Compliance"
+        ],
+        icon: "☁️",
+        color: "from-green-500 to-teal-600"
+      },
+      {
+        id: "mobile-apps",
+        name: "Mobile Applications",
+        tagline: "Cross-platform mobile experiences",
+        description: "Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.",
+        features: [
+          "React Native Development",
+          "iOS & Android Native",
+          "Push Notifications",
+          "Offline Capabilities",
+          "App Store Optimization"
+        ],
+        icon: "📱",
+        color: "from-purple-500 to-pink-600"
+      },
+      {
+        id: "ai-solutions",
+        name: "AI Solutions",
+        tagline: "Intelligent automation & insights",
+        description: "Harness the power of artificial intelligence to automate processes and gain valuable business insights.",
+        features: [
+          "Machine Learning Models",
+          "Natural Language Processing",
+          "Computer Vision",
+          "Predictive Analytics",
+          "AI-Powered Chatbots"
+        ],
+        icon: "🤖",
+        color: "from-orange-500 to-red-600",
+        badge: "New",
+        comingSoon: true
+      }
+    ],
+
+    services: [
+      {
+        icon: '🌐',
+        title: 'Web Development',
+        description: 'Modern, responsive web applications built with cutting-edge technologies like React, TypeScript, and Node.js.',
+        features: [
+          'Single Page Applications (SPA)',
+          'Progressive Web Apps (PWA)',
+          'E-commerce Solutions',
+          'Content Management Systems',
+          'API Development & Integration',
+        ],
+        color: 'from-blue-500 to-purple-600',
+      },
+      {
+        icon: '☁️',
+        title: 'Cloud Solutions',
+        description: 'Scalable cloud infrastructure and migration services to optimize performance and reduce costs.',
+        features: [
+          'AWS & Azure Cloud Migration',
+          'Serverless Architecture',
+          'DevOps & CI/CD Pipelines',
+          'Container Orchestration',
+          'Cloud Security & Monitoring',
+        ],
+        color: 'from-green-500 to-teal-600',
+      },
+      {
+        icon: '📱',
+        title: 'Mobile Development',
+        description: 'Cross-platform mobile applications that deliver exceptional user experiences across iOS and Android.',
+        features: [
+          'React Native Development',
+          'Native iOS & Android',
+          'App Store Optimization',
+          'Mobile UI/UX Design',
+          'Push Notifications & Analytics',
+        ],
+        color: 'from-purple-500 to-pink-600',
+      },
+      {
+        icon: '🔧',
+        title: 'Digital Transformation',
+        description: 'Strategic consulting and implementation services to modernize your business processes and technology stack.',
+        features: [
+          'Technology Assessment',
+          'Legacy System Modernization',
+          'Process Automation',
+          'Digital Strategy Planning',
+          'Change Management',
+        ],
+        color: 'from-orange-500 to-red-600',
+      },
+      {
+        icon: '🔒',
+        title: 'Cybersecurity',
+        description: 'Comprehensive security solutions to protect your business from evolving cyber threats.',
+        features: [
+          'Security Audits & Assessments',
+          'Penetration Testing',
+          'Compliance & Governance',
+          'Incident Response Planning',
+          'Security Training Programs',
+        ],
+        color: 'from-red-500 to-pink-600',
+      },
+      {
+        icon: '📊',
+        title: 'Data Analytics',
+        description: 'Transform your data into actionable insights with advanced analytics and business intelligence solutions.',
+        features: [
+          'Business Intelligence Dashboards',
+          'Data Warehouse Solutions',
+          'Machine Learning Models',
+          'Real-time Analytics',
+          'Data Visualization',
+        ],
+        color: 'from-indigo-500 to-blue-600',
+      },
+    ],
+
+    contact: {
+      email: 'jameskinley24@gmail.com',
+      //email: 'hello@clsolutions.dev',
+      socialMedia: {
+        linkedin: 'https://www.linkedin.com/company/cardiganlanesolutions',
+        github: 'https://github.com/cardigan-lane-solutions'
+      }
+    }
   },
-  
+
   colors: {
     // Primary brand color - Modern tech blue
     primary: {
@@ -131,7 +394,7 @@ export const brandConfig: BrandConfig = {
       800: '#1e40af',
       900: '#1e3a8a',
     },
-    
+
     // Secondary color - Professional slate
     secondary: {
       50: '#f8fafc',
@@ -145,7 +408,7 @@ export const brandConfig: BrandConfig = {
       800: '#1e293b',
       900: '#0f172a',
     },
-    
+
     // Accent color - Success green
     accent: {
       50: '#ecfdf5',
@@ -159,7 +422,7 @@ export const brandConfig: BrandConfig = {
       800: '#065f46',
       900: '#064e3b',
     },
-    
+
     // Neutral grays
     neutral: {
       50: '#fafafa',
@@ -174,7 +437,7 @@ export const brandConfig: BrandConfig = {
       900: '#18181b',
     },
   },
-  
+
   typography: {
     fontFamily: {
       display: ['Inter', 'system-ui', 'sans-serif'],
@@ -202,18 +465,18 @@ export const brandConfig: BrandConfig = {
       extrabold: 800,
     },
   },
-  
+
   spacing: {
     section: '6rem', // 96px
     container: '2rem', // 32px
     component: '1.5rem', // 24px
   },
-  
+
   assets: {
     logo: logo,
     backgroundImage: backgroundImage,
   },
-  
+
   animations: {
     duration: {
       fast: '200ms',

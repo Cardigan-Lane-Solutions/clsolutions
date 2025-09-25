@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Footer, Hero, About, Services, Contact } from './components';
+import { Header, Footer, Hero, About, Testimonials, Products, Services, Contact } from './components';
 import SEO from './components/SEO';
 import ErrorBoundary from './components/ErrorBoundary';
 import { NavigationItem } from './types/components';
@@ -10,6 +10,8 @@ function App() {
   const navigation: NavigationItem[] = [
     { label: 'Home', href: '#hero' },
     { label: 'About', href: '#about' },
+    { label: 'Testimonials', href: '#testimonials' },
+    { label: 'Products', href: '#products' },
     { label: 'Services', href: '#services' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -34,16 +36,22 @@ function App() {
 
         {/* Main Content */}
         <main id="main-content" role="main">
-          {/* Hero Section - Full screen landing */}
+          {/* Hero Section */}
           <Hero />
           
-          {/* About Section - Company overview */}
+          {/* About Section */}
           <About />
+
+          {/* Testimonials Section*/}
+          <Testimonials />
           
-          {/* Services Section - What we offer */}
+          {/* Products Section */}
+          <Products />
+          
+          {/* Services Section */}
           <Services />
           
-          {/* Contact Section - Get in touch */}
+          {/* Contact Section  */}
           <Contact />
         </main>
 

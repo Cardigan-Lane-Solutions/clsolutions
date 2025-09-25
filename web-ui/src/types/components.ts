@@ -47,18 +47,6 @@ export interface HeaderProps extends BaseComponentProps {
 
 export interface FooterProps extends BaseComponentProps {
   navigation?: NavigationItem[];
-  companyInfo?: {
-    name: string;
-    description: string;
-    email?: string;
-    phone?: string;
-    address?: string;
-  };
-  socialLinks?: {
-    platform: string;
-    url: string;
-    icon: string;
-  }[];
 }
 
 export interface HeroProps extends BaseComponentProps {

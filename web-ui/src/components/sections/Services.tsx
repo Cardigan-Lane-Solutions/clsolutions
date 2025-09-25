@@ -1,87 +1,13 @@
 import React from 'react';
+import brandConfig from '../../config/brand.config';
 import { Container, Section, Card, Button } from '../index';
 
 const Services: React.FC = () => {
-  const services = [
-    {
-      icon: '🌐',
-      title: 'Web Development',
-      description: 'Modern, responsive web applications built with cutting-edge technologies like React, TypeScript, and Node.js.',
-      features: [
-        'Single Page Applications (SPA)',
-        'Progressive Web Apps (PWA)',
-        'E-commerce Solutions',
-        'Content Management Systems',
-        'API Development & Integration',
-      ],
-      color: 'from-blue-500 to-purple-600',
-    },
-    {
-      icon: '☁️',
-      title: 'Cloud Solutions',
-      description: 'Scalable cloud infrastructure and migration services to optimize performance and reduce costs.',
-      features: [
-        'AWS & Azure Cloud Migration',
-        'Serverless Architecture',
-        'DevOps & CI/CD Pipelines',
-        'Container Orchestration',
-        'Cloud Security & Monitoring',
-      ],
-      color: 'from-green-500 to-teal-600',
-    },
-    {
-      icon: '📱',
-      title: 'Mobile Development',
-      description: 'Cross-platform mobile applications that deliver exceptional user experiences across iOS and Android.',
-      features: [
-        'React Native Development',
-        'Native iOS & Android',
-        'App Store Optimization',
-        'Mobile UI/UX Design',
-        'Push Notifications & Analytics',
-      ],
-      color: 'from-purple-500 to-pink-600',
-    },
-    {
-      icon: '🔧',
-      title: 'Digital Transformation',
-      description: 'Strategic consulting and implementation services to modernize your business processes and technology stack.',
-      features: [
-        'Technology Assessment',
-        'Legacy System Modernization',
-        'Process Automation',
-        'Digital Strategy Planning',
-        'Change Management',
-      ],
-      color: 'from-orange-500 to-red-600',
-    },
-    {
-      icon: '🔒',
-      title: 'Cybersecurity',
-      description: 'Comprehensive security solutions to protect your business from evolving cyber threats.',
-      features: [
-        'Security Audits & Assessments',
-        'Penetration Testing',
-        'Compliance & Governance',
-        'Incident Response Planning',
-        'Security Training Programs',
-      ],
-      color: 'from-red-500 to-pink-600',
-    },
-    {
-      icon: '📊',
-      title: 'Data Analytics',
-      description: 'Transform your data into actionable insights with advanced analytics and business intelligence solutions.',
-      features: [
-        'Business Intelligence Dashboards',
-        'Data Warehouse Solutions',
-        'Machine Learning Models',
-        'Real-time Analytics',
-        'Data Visualization',
-      ],
-      color: 'from-indigo-500 to-blue-600',
-    },
-  ];
+  const services = brandConfig.company.services || [];
+
+  if (services.length === 0) {
+    return null;
+  }
 
   return (
     <Section id="services" background="white" padding="lg">
