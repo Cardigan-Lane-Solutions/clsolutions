@@ -1,18 +1,17 @@
-import React, { act, useState } from 'react';
+import React, { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import brandConfig from '../../config/brand.config';
 import { Container, Section, Card, Button } from '../index';
 import { ContactInfo } from '../../types/components';
 
 const Contact: React.FC = () => {
+  const [state, handleSubmit] = useForm("movkvwgr");
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
     message: '',
   });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -21,13 +20,17 @@ const Contact: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    // Don't prevent default - let FormSubmit.co handle the submission
-    setIsSubmitting(true);
-    
-    // FormSubmit.co will handle the actual form submission
-    // The form will redirect or show success based on FormSubmit.co's response
-  };
+  // Reset form data after successful submission
+  React.useEffect(() => {
+    if (state.succeeded) {
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        message: '',
+      });
+    }
+  }, [state.succeeded]);
 
   const contactInfo = brandConfig.company.contact!;
 
@@ -67,7 +70,7 @@ const Contact: React.FC = () => {
             <Card variant="glass" className="text-white">
               <h3 className="text-2xl font-bold mb-6">Send us a Message</h3>
 
-              {submitted ? (
+              {state.succeeded ? (
                 <div className="text-center py-12" role="alert" aria-live="polite">
                   <div className="text-6xl mb-4" aria-hidden="true">🎉</div>
                   <h4 className="text-2xl font-bold mb-2 text-accent-300">Thank You!</h4>
@@ -76,7 +79,15 @@ const Contact: React.FC = () => {
                   </p>
                 </div>
               ) : (
-                <form action="https://formsubmit.co/7fdc8afa38852b912606769acd37b00b" method="POST" className="space-y-6" noValidate>
+                <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                  {state.errors && Object.keys(state.errors).length > 0 && (
+                    <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4 mb-6">
+                      <p className="text-red-400 text-sm">
+                        There was a problem submitting your form. Please check your entries and try again.
+                      </p>
+                    </div>
+                  )}
+                  
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-200 mb-2">
@@ -94,6 +105,12 @@ const Contact: React.FC = () => {
                         className="w-full px-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-transparent"
                         placeholder="John Doe"
                       />
+                      <ValidationError 
+                        prefix="Name" 
+                        field="name"
+                        errors={state.errors}
+                        className="text-red-400 text-sm mt-1"
+                      />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-2">
@@ -110,6 +127,12 @@ const Contact: React.FC = () => {
                         aria-describedby="email-error"
                         className="w-full px-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-transparent"
                         placeholder="john@example.com"
+                      />
+                      <ValidationError 
+                        prefix="Email" 
+                        field="email"
+                        errors={state.errors}
+                        className="text-red-400 text-sm mt-1"
                       />
                     </div>
                   </div>
@@ -145,17 +168,23 @@ const Contact: React.FC = () => {
                       className="w-full px-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-transparent resize-none"
                       placeholder="Tell us about your project..."
                     ></textarea>
+                    <ValidationError 
+                      prefix="Message" 
+                      field="message"
+                      errors={state.errors}
+                      className="text-red-400 text-sm mt-1"
+                    />
                   </div>
 
                   <Button
                     type="submit"
                     variant="primary"
                     size="lg"
-                    loading={isSubmitting}
-                    disabled={!formData.name || !formData.email || !formData.message}
+                    loading={state.submitting}
+                    disabled={state.submitting || !formData.name || !formData.email || !formData.message}
                     className="w-full bg-accent-600 hover:bg-accent-700 text-white shadow-xl hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? 'Sending Message...' : 'Send Message'}
+                    {state.submitting ? 'Sending Message...' : 'Send Message'}
                   </Button>
                 </form>
               )}
