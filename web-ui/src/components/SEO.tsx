@@ -1,5 +1,5 @@
 import React from 'react';
-import { brandConfig } from '../config/brand.config';
+import brandConfig from '../config/brand.config';
 
 interface SEOProps {
   title?: string;
@@ -12,9 +12,24 @@ interface SEOProps {
 const SEO: React.FC<SEOProps> = ({
   title = `${brandConfig.company.name} - ${brandConfig.company.tagline}`,
   description = brandConfig.company.description,
-  keywords = ['technology solutions', 'web development', 'cloud solutions', 'digital transformation'],
+  keywords = [
+    'technology solutions', 
+    'web development', 
+    'cloud solutions', 
+    'digital transformation', 
+    'cardigan lane solutions',
+    'mobile applications',
+    'responsive web design',
+    'automation solutions',
+    'digital consulting',
+    'artificial intelligence',
+    'agentic ai',
+    'agentic artificial intelligence',
+    'large language models',
+    'ai solutions'
+  ],
   image = brandConfig.assets.logo,
-  url = 'https://cardiganlane.com'
+  url = brandConfig.company.contact!.website
 }) => {
   const structuredData = {
     "@context": "https://schema.org",
@@ -25,23 +40,24 @@ const SEO: React.FC<SEOProps> = ({
     "logo": image,
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+1-555-123-4567",
       "contactType": "customer service",
-      "email": "hello@cardiganlane.com"
+      "email": brandConfig.company.contact!.email
     },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "123 Technology Drive",
-      "addressLocality": "San Francisco",
-      "addressRegion": "CA",
-      "postalCode": "94105",
-      "addressCountry": "US"
-    },
+    ...(brandConfig.company.contact?.address && {
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": brandConfig.company.contact.address.street,
+        "addressLocality": brandConfig.company.contact.address.city,
+        "addressRegion": brandConfig.company.contact.address.state,
+        "postalCode": brandConfig.company.contact.address.zip,
+        "addressCountry": brandConfig.company.contact.address.country
+      }
+    }),
     "sameAs": [
-      "https://linkedin.com/company/cardiganlane",
-      "https://twitter.com/cardiganlane",
-      "https://github.com/cardiganlane"
-    ]
+      ...(brandConfig.company.contact?.socialMedia?.linkedin ? [brandConfig.company.contact.socialMedia.linkedin] : []),
+      ...(brandConfig.company.contact?.socialMedia?.github ? [brandConfig.company.contact.socialMedia.github] : []),
+      ...(brandConfig.company.contact?.socialMedia?.twitter ? [brandConfig.company.contact.socialMedia.twitter] : [])
+    ].filter(Boolean)
   };
 
   React.useEffect(() => {
@@ -73,10 +89,8 @@ const SEO: React.FC<SEOProps> = ({
     }
     structuredDataScript.textContent = JSON.stringify(structuredData);
 
-    return () => {
-      // Cleanup if needed
-    };
-  }, [title, description, keywords, image, url]);
+    return () => {};
+  }, [title, description, keywords, image, url, structuredData]);
 
   return null; // This component doesn't render anything visible
 };

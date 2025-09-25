@@ -52,6 +52,7 @@ interface Service {
 }
 
 interface ContactInfo {
+  website: string;
   email: string;
   phone?: string;
   address?: {
@@ -371,8 +372,8 @@ export const brandConfig: BrandConfig = {
     ],
 
     contact: {
-      email: 'jameskinley24@gmail.com',
-      //email: 'hello@clsolutions.dev',
+      website: 'https://clsolutions.tech',
+      email: 'hello@clsolutions.tech',
       socialMedia: {
         linkedin: 'https://www.linkedin.com/company/cardiganlanesolutions',
         github: 'https://github.com/cardigan-lane-solutions'
