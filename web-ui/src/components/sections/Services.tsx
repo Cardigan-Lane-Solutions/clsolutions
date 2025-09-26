@@ -1,9 +1,15 @@
 import React from 'react';
 import brandConfig from '../../config/brand.config';
 import { Container, Section, Card, Button } from '../index';
+import ServiceModal from '../modals/ServiceModal';
 
 const Services: React.FC = () => {
   const services = brandConfig.company.services || [];
+  const [openServiceIndex, setOpenServiceIndex] = React.useState<number | null>(null);
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const openModalFor = (i: number) => { setOpenServiceIndex(i); setModalOpen(true); };
+  const requestClose = () => setModalOpen(false);
+  const afterClose = () => setOpenServiceIndex(null);
 
   if (services.length === 0) {
     return null;
@@ -70,6 +76,7 @@ const Services: React.FC = () => {
                     variant="outline"
                     size="sm"
                     className="w-full group-hover:bg-primary-600 group-hover:text-white group-hover:border-primary-600 transition-all duration-300"
+                    onClick={() => openModalFor(index)}
                   >
                     Learn More
                   </Button>
@@ -171,6 +178,8 @@ const Services: React.FC = () => {
           </div>
         </div>
       </Container>
+      {/* Modal Mount */}
+      <ServiceModal open={modalOpen} onClose={requestClose} onAfterClose={afterClose} serviceIndex={openServiceIndex} />
     </Section>
   );
 };

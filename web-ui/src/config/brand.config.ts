@@ -46,9 +46,12 @@ interface Product {
 interface Service {
   icon: string;
   title: string;
-  description: string;
-  features: string[];
-  color: string;
+  description: string; // short blurb
+  longDescription?: string; // extended marketing copy for modal
+  features: string[]; // bullet list on card
+  highlights?: string[]; // extra selling points for modal
+  image?: string; // path relative to public for modal illustration
+  color: string; // gradient tailwind classes e.g. from-blue-500 to-purple-600
 }
 
 interface ContactInfo {
@@ -220,6 +223,7 @@ export const brandConfig: BrandConfig = {
         icon: '🔧',
         title: 'Digital Transformation',
         description: 'Strategic consulting and implementation services to modernize your business processes and technology stack.',
+        longDescription: 'We partner with stakeholders to evaluate existing capabilities, identify gaps, and design a pragmatic transformation roadmap that emphasises rapid value delivery, risk reduction, and organisational adoption.',
         features: [
           'Technology Assessment',
           'Legacy System Modernisation',
@@ -227,12 +231,20 @@ export const brandConfig: BrandConfig = {
           'Digital Strategy Planning',
           'Change Management'
         ],
+        highlights: [
+          'Outcome-focused roadmaps',
+          'Modern architecture enablement',
+          'Cultural & process alignment',
+          'Prioritised incremental delivery'
+        ],
+        image: `${process.env.PUBLIC_URL}/images/services/digital-transformation.jpg`,
         color: 'from-orange-500 to-red-600',
       },
       {
         icon: '🤖',
         title: 'Artificial Intelligence',
         description: 'Streamline operations and enhance customer experiences with custom AI solutions tailored to your business needs.',
+        longDescription: 'We design and deploy secure, production-ready AI & agentic systems that integrate seamlessly with your people, data, and processes—unlocking measurable efficiency and new value propositions.',
         features: [
           'Custom Agentic Pipelines',
           'Voice & Chat Interfaces',
@@ -240,12 +252,20 @@ export const brandConfig: BrandConfig = {
           'Integration with existing systems',
           'Migration to AI-friendly architectures and technologies.'
         ],
+        highlights: [
+          'Responsible AI patterns',
+          'Tool & data layer integration',
+          'Scalable inference optimisation',
+          'Human-in-the-loop workflows'
+        ],
+        image: `${process.env.PUBLIC_URL}/images/services/ai.jpg`,
         color: 'from-yellow-500 to-red-600',
       },
       {
         icon: '🌐',
         title: 'Web Development',
         description: 'Modern, responsive web applications built client first, ensuring fluid, enjoyable user experiences.',
+        longDescription: 'From proof-of-concept to enterprise platforms, our engineering approach emphasises performance, accessibility, security, and maintainability—without compromising brand experience.',
         features: [
           'Single Page Applications (SPA)',
           'Progressive Web Apps (PWA)',
@@ -253,12 +273,20 @@ export const brandConfig: BrandConfig = {
           'Content Management Systems',
           'API Development & Integration'
         ],
+        highlights: [
+          'Performance & Core Web Vitals',
+          'Design system alignment',
+          'Secure-by-default patterns',
+          'Scalable service architectures'
+        ],
+        image: `${process.env.PUBLIC_URL}/images/services/web.jpg`,
         color: 'from-blue-500 to-purple-600',
       },
       {
         icon: '☁️',
         title: 'Cloud Solutions',
         description: 'Scalable cloud infrastructure and migration services to optimize performance and reduce costs.',
+        longDescription: 'We design resilient, observable cloud platforms leveraging automation, infrastructure-as-code, and FinOps to drive sustainable velocity and cost efficiency.',
         features: [
           'AWS & Azure Cloud Migration',
           'Serverless Architecture',
@@ -266,12 +294,20 @@ export const brandConfig: BrandConfig = {
           'Container Orchestration',
           'Cloud Security & Monitoring',
         ],
+        highlights: [
+          'Zero-downtime migration strategies',
+          'Cost & scalability optimisation',
+          'Security & compliance alignment',
+          'Observability & SRE practices'
+        ],
+        image: `${process.env.PUBLIC_URL}/images/services/cloud.jpg`,
         color: 'from-green-500 to-teal-600',
       },
       {
         icon: '🧑‍💻',
         title: 'Custom Software Development',
         description: 'Tailored software solutions designed to meet your unique business challenges and objectives.',
+        longDescription: 'We co-create robust, extensible platforms and internal tools that accelerate differentiation, reduce manual effort, and evolve with your business.',
         features: [
           'Bespoke Application Development',
           'System Integration',
@@ -279,6 +315,13 @@ export const brandConfig: BrandConfig = {
           'Scalable & Modular Solutions',
           'An extension of your team'
         ],
+        highlights: [
+          'Domain-driven design alignment',
+          'Maintainability & test strategy',
+          'Progressive enhancement',
+          'Transparent delivery cadence'
+        ],
+        image: `${process.env.PUBLIC_URL}/images/services/custom-dev.jpg`,
         color: 'from-purple-500 to-pink-600'
       }
     ],
