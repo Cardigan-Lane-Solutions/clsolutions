@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import brandConfig from '../config/brand.config';
 
 interface SEOProps {
@@ -31,7 +31,7 @@ const SEO: React.FC<SEOProps> = ({
   image = brandConfig.assets.logo,
   url = brandConfig.company.contact!.website
 }) => {
-  const structuredData = {
+  const structuredData = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": brandConfig.company.name,
@@ -58,7 +58,7 @@ const SEO: React.FC<SEOProps> = ({
       ...(brandConfig.company.contact?.socialMedia?.github ? [brandConfig.company.contact.socialMedia.github] : []),
       ...(brandConfig.company.contact?.socialMedia?.twitter ? [brandConfig.company.contact.socialMedia.twitter] : [])
     ].filter(Boolean)
-  };
+  }), [url, image]);
 
   React.useEffect(() => {
     // Update document title

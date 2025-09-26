@@ -69,6 +69,13 @@ interface ContactInfo {
   };
 }
 
+interface CaseStudy {
+  title: string;
+  description: string;
+  images: string[];
+  link?: string;
+}
+
 export interface BrandConfig {
   company: {
     name: string;
@@ -81,6 +88,7 @@ export interface BrandConfig {
     products?: Product[];
     services?: Service[];
     contact?: ContactInfo;
+    caseStudies?: CaseStudy[];
   };
   colors: {
     primary: {
@@ -205,38 +213,45 @@ export const brandConfig: BrandConfig = {
       }
     ],
     mission: "To empower businesses with innovative technology solutions that drive growth, enhance efficiency, and create lasting competitive advantages in the digital landscape. We believe that great technology should be accessible, scalable, and transformative.",
-    testimonials: [
+    testimonials: [],
+    products: [],
+    services: [
       {
-        logo: `${process.env.PUBLIC_URL}/eip.webp`,
-        quote: "development development hmmmmmmmm",
-        company: "EIP Ltd.",
-        author: "John Doe, CTO"
+        icon: '🔧',
+        title: 'Digital Transformation',
+        description: 'Strategic consulting and implementation services to modernize your business processes and technology stack.',
+        features: [
+          'Technology Assessment',
+          'Legacy System Modernisation',
+          'Process Automation',
+          'Digital Strategy Planning',
+          'Change Management'
+        ],
+        color: 'from-orange-500 to-red-600',
       },
       {
-        logo: `${process.env.PUBLIC_URL}/rushen-silver-band.png`,
-        quote: "Website website wbsite hmmm",
-        company: "Rushen Silver Band",
-        author: "Jane Smith, Chairman",
-        action: {
-          text: "Visit Their Site",
-          href: "https://www.rushensilverband.com"
-        }
-      }
-    ],
-
-    products: [],
-
-    services: [
+        icon: '🤖',
+        title: 'Artificial Intelligence',
+        description: 'Streamline operations and enhance customer experiences with custom AI solutions tailored to your business needs.',
+        features: [
+          'Custom Agentic Pipelines',
+          'Voice & Chat Interfaces',
+          'Automated processes, internally and externally',
+          'Integration with existing systems',
+          'Migration to AI-friendly architectures and technologies.'
+        ],
+        color: 'from-yellow-500 to-red-600',
+      },
       {
         icon: '🌐',
         title: 'Web Development',
-        description: 'Modern, responsive web applications built with cutting-edge technologies like React, TypeScript, and Node.js.',
+        description: 'Modern, responsive web applications built client first, ensuring fluid, enjoyable user experiences.',
         features: [
           'Single Page Applications (SPA)',
           'Progressive Web Apps (PWA)',
           'E-commerce Solutions',
           'Content Management Systems',
-          'API Development & Integration',
+          'API Development & Integration'
         ],
         color: 'from-blue-500 to-purple-600',
       },
@@ -254,57 +269,18 @@ export const brandConfig: BrandConfig = {
         color: 'from-green-500 to-teal-600',
       },
       {
-        icon: '📱',
-        title: 'Mobile Development',
-        description: 'Cross-platform mobile applications that deliver exceptional user experiences across iOS and Android.',
+        icon: '🧑‍💻',
+        title: 'Custom Software Development',
+        description: 'Tailored software solutions designed to meet your unique business challenges and objectives.',
         features: [
-          'React Native Development',
-          'Native iOS & Android',
-          'App Store Optimization',
-          'Mobile UI/UX Design',
-          'Push Notifications & Analytics',
+          'Bespoke Application Development',
+          'System Integration',
+          'Maintenance & Support',
+          'Scalable & Modular Solutions',
+          'An extension of your team'
         ],
-        color: 'from-purple-500 to-pink-600',
-      },
-      {
-        icon: '🔧',
-        title: 'Digital Transformation',
-        description: 'Strategic consulting and implementation services to modernize your business processes and technology stack.',
-        features: [
-          'Technology Assessment',
-          'Legacy System Modernization',
-          'Process Automation',
-          'Digital Strategy Planning',
-          'Change Management',
-        ],
-        color: 'from-orange-500 to-red-600',
-      },
-      {
-        icon: '🔒',
-        title: 'Cybersecurity',
-        description: 'Comprehensive security solutions to protect your business from evolving cyber threats.',
-        features: [
-          'Security Audits & Assessments',
-          'Penetration Testing',
-          'Compliance & Governance',
-          'Incident Response Planning',
-          'Security Training Programs',
-        ],
-        color: 'from-red-500 to-pink-600',
-      },
-      {
-        icon: '📊',
-        title: 'Data Analytics',
-        description: 'Transform your data into actionable insights with advanced analytics and business intelligence solutions.',
-        features: [
-          'Business Intelligence Dashboards',
-          'Data Warehouse Solutions',
-          'Machine Learning Models',
-          'Real-time Analytics',
-          'Data Visualization',
-        ],
-        color: 'from-indigo-500 to-blue-600',
-      },
+        color: 'from-purple-500 to-pink-600'
+      }
     ],
 
     contact: {

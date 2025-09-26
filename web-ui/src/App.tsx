@@ -6,13 +6,22 @@ import brandConfig from './config/brand.config';
 import './App.css';
 
 function App() {
-  // Navigation configuration
+  // Navigation configuration - dynamically built based on available content
   const navigation: NavigationItem[] = [
     { label: 'Home', href: '#hero' },
     { label: 'About', href: '#about' },
-    { label: 'Testimonials', href: '#testimonials' },
-    { label: 'Products', href: '#products' },
-    { label: 'Services', href: '#services' },
+    ...(brandConfig.company.testimonials && brandConfig.company.testimonials.length > 0 
+      ? [{ label: 'Testimonials', href: '#testimonials' }] 
+      : []
+    ),
+    ...(brandConfig.company.products && brandConfig.company.products.length > 0 
+      ? [{ label: 'Products', href: '#products' }] 
+      : []
+    ),
+    ...(brandConfig.company.services && brandConfig.company.services.length > 0 
+      ? [{ label: 'Services', href: '#services' }] 
+      : []
+    ),
     { label: 'Contact', href: '#contact' },
   ];
 
