@@ -224,71 +224,7 @@ export const brandConfig: BrandConfig = {
       }
     ],
 
-    products: [
-      {
-        id: "web-solutions",
-        name: "Web Solutions Suite",
-        tagline: "Modern web applications that scale",
-        description: "Complete web development solutions from concept to deployment, featuring cutting-edge technologies and responsive design.",
-        features: [
-          "React & TypeScript Applications",
-          "Progressive Web Apps (PWA)",
-          "E-commerce Platforms",
-          "Content Management Systems",
-          "API Development & Integration"
-        ],
-        icon: "🌐",
-        color: "from-blue-500 to-purple-600",
-        badge: "Popular"
-      },
-      {
-        id: "cloud-platform",
-        name: "Cloud Platform",
-        tagline: "Scalable infrastructure solutions",
-        description: "Enterprise-grade cloud infrastructure and DevOps solutions that grow with your business needs.",
-        features: [
-          "AWS & Azure Migration",
-          "Kubernetes Orchestration",
-          "CI/CD Pipeline Setup",
-          "Monitoring & Analytics",
-          "Security & Compliance"
-        ],
-        icon: "☁️",
-        color: "from-green-500 to-teal-600"
-      },
-      {
-        id: "mobile-apps",
-        name: "Mobile Applications",
-        tagline: "Cross-platform mobile experiences",
-        description: "Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.",
-        features: [
-          "React Native Development",
-          "iOS & Android Native",
-          "Push Notifications",
-          "Offline Capabilities",
-          "App Store Optimization"
-        ],
-        icon: "📱",
-        color: "from-purple-500 to-pink-600"
-      },
-      {
-        id: "ai-solutions",
-        name: "AI Solutions",
-        tagline: "Intelligent automation & insights",
-        description: "Harness the power of artificial intelligence to automate processes and gain valuable business insights.",
-        features: [
-          "Machine Learning Models",
-          "Natural Language Processing",
-          "Computer Vision",
-          "Predictive Analytics",
-          "AI-Powered Chatbots"
-        ],
-        icon: "🤖",
-        color: "from-orange-500 to-red-600",
-        badge: "New",
-        comingSoon: true
-      }
-    ],
+    products: [],
 
     services: [
       {

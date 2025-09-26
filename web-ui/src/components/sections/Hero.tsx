@@ -111,14 +111,6 @@ const Hero: React.FC<Partial<HeroProps>> = ({
           </div>
         </div>
       </Container>
-
-      {/* Glass Effect Card (Optional floating element) */}
-      <div className="absolute bottom-10 right-10 hidden lg:block animate-float" style={{ animationDelay: '1.5s' }}>
-        <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-lg p-6 text-white">
-          <div className="text-sm font-medium opacity-90">Trusted by</div>
-          <div className="text-2xl font-bold text-accent-300">50+ Companies</div>
-        </div>
-      </div>
     </section>
   );
 };

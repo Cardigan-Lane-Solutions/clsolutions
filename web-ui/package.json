@@ -24,7 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sitemap": "npx tsx scripts/generate-sitemap.ts",
+    "prebuild": "npm run sitemap"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +54,7 @@
     "gh-pages": "^6.3.0",
     "postcss": "^8.5.6",
     "postcss-loader": "^6.2.1",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.20.6"
   }
 }
