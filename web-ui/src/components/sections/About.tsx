@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Section, Card } from '../index';
+import { Container, Section } from '../index';
 import { brandConfig } from '../../config/brand.config';
 
 const About: React.FC = () => {

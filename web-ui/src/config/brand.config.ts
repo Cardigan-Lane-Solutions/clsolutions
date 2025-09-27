@@ -10,9 +10,9 @@
 // - Typography settings
 // - Spacing and asset configurations
 //
-// Note: Images in the public folder should be referenced using PUBLIC_URL for proper deployment
-const logo = `${process.env.PUBLIC_URL}/cls-logo.svg`;
-const backgroundImage = `${process.env.PUBLIC_URL}/port-erin-background.jpg`;
+// Note: Under Vite, assets in the public folder are served from root (/). Use root-relative paths.
+const logo = '/cls-logo.svg';
+const backgroundImage = '/port-erin-background.jpg';
 
 interface Feature {
   icon: string;
@@ -243,7 +243,7 @@ export const brandConfig: BrandConfig = {
           'Cultural & process alignment',
           'Prioritised incremental delivery'
         ],
-        image: `${process.env.PUBLIC_URL}/services/digital-transformation.jpg`,
+  image: '/services/digital-transformation.webp',
         color: 'from-orange-500 to-red-600',
         imageCredit: {
           profileLink: 'https://unsplash.com/@orangetiephotography?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
@@ -270,7 +270,7 @@ export const brandConfig: BrandConfig = {
           'Scalable inference optimisation',
           'Human-in-the-loop workflows'
         ],
-        image: `${process.env.PUBLIC_URL}/services/ai.jpg`,
+  image: '/services/ai.webp',
         color: 'from-yellow-500 to-red-600',
         imageCredit: {
           profileLink: 'https://unsplash.com/@omilaev?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
@@ -297,7 +297,7 @@ export const brandConfig: BrandConfig = {
           'Secure-by-default patterns',
           'Scalable service architectures'
         ],
-        image: `${process.env.PUBLIC_URL}/services/web.jpg`,
+  image: '/services/web.webp',
         color: 'from-blue-500 to-purple-600',
         imageCredit: {
           profileLink: 'https://unsplash.com/@heyquilia?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
@@ -324,7 +324,7 @@ export const brandConfig: BrandConfig = {
           'Security & compliance alignment',
           'Observability & SRE practices'
         ],
-        image: `${process.env.PUBLIC_URL}/services/cloud.jpg`,
+  image: '/services/cloud.webp',
         color: 'from-green-500 to-teal-600',
         imageCredit: {
           profileLink: 'https://unsplash.com/@hazelz?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
@@ -351,7 +351,7 @@ export const brandConfig: BrandConfig = {
           'Progressive enhancement',
           'Transparent delivery cadence'
         ],
-        image: `${process.env.PUBLIC_URL}/services/custom-dev.jpg`,
+  image: '/services/custom-dev.webp',
         color: 'from-purple-500 to-pink-600',
         imageCredit: {
           profileLink: 'https://unsplash.com/@rahuulmiishra?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',

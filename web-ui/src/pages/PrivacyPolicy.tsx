@@ -122,7 +122,7 @@ export default function PrivacyNotice({ onBack }: PrivacyNoticeProps) {
         Douglas, Isle of Man, IM1 1AU<br />
         Tel: +44 1624 693260<br />
         Email: <a href="mailto:ask@inforights.im" className="text-blue-600">ask@inforights.im</a><br />
-        Website: <a href="https://www.inforights.im" target="_blank" className="text-blue-600">https://www.inforights.im</a>
+  Website: <a href="https://www.inforights.im" target="_blank" rel="noopener noreferrer" className="text-blue-600">https://www.inforights.im</a>
       </address>
 
       <p className="text-sm text-gray-600">Last updated: 27/09/2025</p>
