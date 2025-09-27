@@ -2,43 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
     <loc>https://clsolutions.tech/</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   
   <url>
     <loc>https://clsolutions.tech/#about</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://clsolutions.tech/#services</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://clsolutions.tech/#products</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://clsolutions.tech/#testimonials</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://clsolutions.tech/#contact</loc>
-    <lastmod>2025-09-26</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://clsolutions.tech/privacy</loc>
+    <lastmod>2025-09-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
