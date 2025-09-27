@@ -7,10 +7,11 @@ interface SEOProps {
   keywords?: string[];
   image?: string;
   url?: string;
+  canonical?: string; // Explicit canonical URL override
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = `${brandConfig.company.name} - ${brandConfig.company.tagline}`,
+  title = `${brandConfig.company.name} - Elegance in Software`,
   description = brandConfig.company.description,
   keywords = [
     'technology solutions', 
@@ -29,8 +30,21 @@ const SEO: React.FC<SEOProps> = ({
     'ai solutions'
   ],
   image = brandConfig.assets.logo,
-  url = brandConfig.company.contact!.website
+  url = brandConfig.company.contact!.website,
+  canonical
 }) => {
+  // Derive canonical: prefer explicit prop, else use provided url without query/hash
+  const canonicalUrl = useMemo(() => {
+    if (canonical) return canonical;
+    try {
+      const u = new URL(url);
+      u.search = '';
+      u.hash = '';
+      return u.toString();
+    } catch {
+      return url; // fallback to raw
+    }
+  }, [canonical, url]);
   const structuredData = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -89,8 +103,19 @@ const SEO: React.FC<SEOProps> = ({
     }
     structuredDataScript.textContent = JSON.stringify(structuredData);
 
+    // Canonical link handling
+    if (canonicalUrl) {
+      let linkCanonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+      if (!linkCanonical) {
+        linkCanonical = document.createElement('link');
+        linkCanonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(linkCanonical);
+      }
+      linkCanonical.setAttribute('href', canonicalUrl);
+    }
+
     return () => {};
-  }, [title, description, keywords, image, url, structuredData]);
+  }, [title, description, keywords, image, url, structuredData, canonicalUrl]);
 
   return null; // This component doesn't render anything visible
 };
