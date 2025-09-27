@@ -52,6 +52,12 @@ const sitemapEntries: SitemapEntry[] = [
     lastmod: TODAY,
     changefreq: 'monthly',
     priority: 0.9
+  },
+  {
+    loc: `${DOMAIN}/privacy`,
+    lastmod: TODAY,
+    changefreq: 'yearly',
+    priority: 0.5
   }
 ];
 

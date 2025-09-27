@@ -40,18 +40,27 @@ const Services: React.FC = () => {
               hover
             >
               {/* Header with Gradient */}
-              <div className={`bg-gradient-to-br ${service.color} p-6 -m-6 mb-6 text-white relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/10"></div>
-                <div className="relative z-10">
-                  <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
+              <div className={`bg-gradient-to-br ${service.color} p-6 -m-6 mb-6 text-white relative overflow-hidden`} style={{minHeight:'140px'}}>
+                {/* Optional service image (fills header but does not increase overall card height) */}
+                {service.image && (
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500"
+                    loading="lazy"
+                  />
+                )}
+                <div className="absolute inset-0 bg-black/20 mix-blend-multiply" />
+                <div className="relative z-10 flex flex-col justify-end h-full">
+                  <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300 drop-shadow-lg">
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-bold">
+                  <h3 className="text-xl font-bold drop-shadow">
                     {service.title}
                   </h3>
                 </div>
                 {/* Decorative Circle */}
-                <div className="absolute -right-4 -top-4 w-24 h-24 bg-white/10 rounded-full"></div>
+                <div className="absolute -right-4 -top-4 w-24 h-24 bg-white/10 rounded-full" />
               </div>
 
               {/* Content */}
@@ -90,7 +99,7 @@ const Services: React.FC = () => {
             hover
           >
             {/* Special Header with Pulsing Gradient */}
-            <div className="bg-gradient-to-br from-fuchsia-500 via-amber-400 to-rose-600 dark:from-fuchsia-600 dark:via-amber-500 dark:to-rose-700 p-6 -m-6 mb-6 text-white relative overflow-hidden shadow-[0_0_0_2px_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(244,114,182,0.55)] after:content-[''] after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_25%_35%,rgba(255,255,255,0.35),transparent_60%)] after:pointer-events-none">
+            <div className="bg-gradient-to-br from-fuchsia-500 via-amber-400 to-rose-600 dark:from-fuchsia-600 dark:via-amber-500 dark:to-rose-700 p-6 -m-6 mb-6 text-white relative overflow-hidden shadow-[0_0_0_2px_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(244,114,182,0.55)] after:content-[''] after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_25%_35%,rgba(255,255,255,0.35),transparent_60%)] after:pointer-events-none" style={{minHeight:'140px'}}>
               <div className="absolute inset-0 bg-black/10"></div>
               {/* Animated gradient overlay (sheen) */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse opacity-40 mix-blend-overlay"></div>

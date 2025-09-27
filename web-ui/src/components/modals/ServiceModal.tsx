@@ -87,20 +87,44 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ open, onClose, onAft
 
         <div className="flex flex-col md:flex-row flex-1 min-h-0">
           {/* Image / Visual Side (hidden on mobile) */}
-          <div className="hidden md:flex md:w-5/12 relative group bg-gradient-to-br from-slate-800 to-slate-900 items-stretch">
-            {service.image ? (
+          <div className="hidden md:flex md:w-5/12 relative group bg-gradient-to-br from-slate-800 to-slate-900">
+            {service.image && (
               <img
                 src={service.image}
                 alt={service.title}
-                className="object-cover w-full h-56 md:h-full opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                loading="lazy"
               />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-6xl">
+            )}
+            {!service.image && (
+              <div className="absolute inset-0 flex items-center justify-center text-6xl">
                 <span>{service.icon}</span>
               </div>
             )}
             <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/40 pointer-events-none" />
             <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10 blur-3xl" />
+            {service.imageCredit && (
+              <div className="absolute bottom-2 left-2 text-[10px] text-white/80 bg-black/40 backdrop-blur-sm px-2 py-1 rounded-md leading-tight space-x-1">
+                <span>Photo by</span>
+                <a
+                  href={service.imageCredit.profileLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-dotted hover:decoration-solid"
+                >
+                  {service.imageCredit.name}
+                </a>
+                <span>on</span>
+                <a
+                  href={service.imageCredit.imageLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-dotted hover:decoration-solid"
+                >
+                  {service.imageCredit.imageSource}
+                </a>
+              </div>
+            )}
           </div>
 
           {/* Content (scrollable on small screens) */}
@@ -111,6 +135,29 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ open, onClose, onAft
               <h3 id="service-modal-title" className="text-2xl md:text-3xl font-bold text-secondary-900 mb-3">
                 {service.title}
               </h3>
+              {/* Mobile image credit (image hidden so show attribution here) */}
+              {service.image && service.imageCredit && (
+                <div className="md:hidden -mt-2 mb-4 text-[11px] text-secondary-500">
+                  <span>Photo by </span>
+                  <a
+                    href={service.imageCredit.profileLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-dotted hover:decoration-solid"
+                  >
+                    {service.imageCredit.name}
+                  </a>
+                  <span> on </span>
+                  <a
+                    href={service.imageCredit.imageLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-dotted hover:decoration-solid"
+                  >
+                    {service.imageCredit.imageSource}
+                  </a>
+                </div>
+              )}
               {service.longDescription && (
                 <p className="text-secondary-600 leading-relaxed text-base md:text-lg">
                   {service.longDescription}

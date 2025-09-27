@@ -5,12 +5,19 @@ import Container from '../ui/Container';
 import Button from '../ui/Button';
 import { cn } from '../../utils/styles';
 
-const Header: React.FC<HeaderProps> = ({
+interface ExtendedHeaderProps extends HeaderProps {
+  onNavigate?: (to: string) => void;
+  currentPath?: string;
+}
+
+const Header: React.FC<ExtendedHeaderProps> = ({
   navigation,
   logo = brandConfig.assets.logo,
   transparent = false,
   fixed = true,
   className = '',
+  onNavigate,
+  currentPath,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -60,12 +67,20 @@ const Header: React.FC<HeaderProps> = ({
   );
 
   const scrollToSection = (href: string) => {
-    if (href.startsWith('#')) {
+    if (!href.startsWith('#')) return;
+    const performScroll = () => {
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
         setIsMobileMenuOpen(false);
       }
+    };
+    if (currentPath === '/privacy' && onNavigate) {
+      onNavigate('/');
+      // Delay scroll until main content is rendered
+      setTimeout(performScroll, 50);
+    } else {
+      performScroll();
     }
   };
 

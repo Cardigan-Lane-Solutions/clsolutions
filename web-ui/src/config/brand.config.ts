@@ -52,6 +52,12 @@ interface Service {
   highlights?: string[]; // extra selling points for modal
   image?: string; // path relative to public for modal illustration
   color: string; // gradient tailwind classes e.g. from-blue-500 to-purple-600
+  imageCredit?: {
+    profileLink: string; // photographer profile URL
+    name: string; // photographer name
+    imageLink: string; // direct image URL (with UTM parameters if required by source)
+    imageSource: string; // e.g. 'Unsplash'
+  };
 }
 
 interface ContactInfo {
@@ -237,8 +243,14 @@ export const brandConfig: BrandConfig = {
           'Cultural & process alignment',
           'Prioritised incremental delivery'
         ],
-        image: `${process.env.PUBLIC_URL}/images/services/digital-transformation.jpg`,
+        image: `${process.env.PUBLIC_URL}/services/digital-transformation.jpg`,
         color: 'from-orange-500 to-red-600',
+        imageCredit: {
+          profileLink: 'https://unsplash.com/@orangetiephotography?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+          name: 'Joshua Lawrence',
+          imageLink: 'https://unsplash.com/photos/a-blurry-photo-of-a-city-at-night-kdn7WEbZsjo?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+          imageSource: 'Unsplash'
+        },
       },
       {
         icon: '🤖',
@@ -258,8 +270,14 @@ export const brandConfig: BrandConfig = {
           'Scalable inference optimisation',
           'Human-in-the-loop workflows'
         ],
-        image: `${process.env.PUBLIC_URL}/images/services/ai.jpg`,
+        image: `${process.env.PUBLIC_URL}/services/ai.jpg`,
         color: 'from-yellow-500 to-red-600',
+        imageCredit: {
+          profileLink: 'https://unsplash.com/@omilaev?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+          name: 'Igor Omilaev',
+          imageLink: 'https://unsplash.com/photos/a-computer-chip-with-the-letter-a-on-top-of-it-eGGFZ5X2LnA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+          imageSource: 'Unsplash'
+        },
       },
       {
         icon: '🌐',
@@ -279,8 +297,14 @@ export const brandConfig: BrandConfig = {
           'Secure-by-default patterns',
           'Scalable service architectures'
         ],
-        image: `${process.env.PUBLIC_URL}/images/services/web.jpg`,
+        image: `${process.env.PUBLIC_URL}/services/web.jpg`,
         color: 'from-blue-500 to-purple-600',
+        imageCredit: {
+          profileLink: 'https://unsplash.com/@heyquilia?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+          name: 'Kenny Eliason',
+          imageLink: 'https://unsplash.com/photos/black-and-gray-electronic-device-uq5RMAZdZG4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+          imageSource: 'Unsplash'
+        },
       },
       {
         icon: '☁️',
@@ -300,8 +324,14 @@ export const brandConfig: BrandConfig = {
           'Security & compliance alignment',
           'Observability & SRE practices'
         ],
-        image: `${process.env.PUBLIC_URL}/images/services/cloud.jpg`,
+        image: `${process.env.PUBLIC_URL}/services/cloud.jpg`,
         color: 'from-green-500 to-teal-600',
+        imageCredit: {
+          profileLink: 'https://unsplash.com/@hazelz?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+            name: 'Hazel Z',
+            imageLink: 'https://unsplash.com/photos/a-computer-screen-with-a-cloud-shaped-object-on-top-of-it-FocSgUZ10JM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+            imageSource: 'Unsplash'
+        },
       },
       {
         icon: '🧑‍💻',
@@ -321,8 +351,14 @@ export const brandConfig: BrandConfig = {
           'Progressive enhancement',
           'Transparent delivery cadence'
         ],
-        image: `${process.env.PUBLIC_URL}/images/services/custom-dev.jpg`,
-        color: 'from-purple-500 to-pink-600'
+        image: `${process.env.PUBLIC_URL}/services/custom-dev.jpg`,
+        color: 'from-purple-500 to-pink-600',
+        imageCredit: {
+          profileLink: 'https://unsplash.com/@rahuulmiishra?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+          name: 'Rahul Mishra',
+          imageLink: 'https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-words-on-it-Zs5X1KnHUzw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+          imageSource: 'Unsplash'
+        },
       }
     ],
 

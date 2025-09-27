@@ -2,6 +2,7 @@ import React from 'react';
 import { HeroProps } from '../../types/components';
 import { brandConfig } from '../../config/brand.config';
 import { Container, Button } from '../index';
+import BackgroundCredit from '../ui/BackgroundCredit';
 import { cn } from '../../utils/styles';
 
 const Hero: React.FC<Partial<HeroProps>> = ({
@@ -111,6 +112,9 @@ const Hero: React.FC<Partial<HeroProps>> = ({
           </div>
         </div>
       </Container>
+
+      {/* Background Image Credit */}
+      <BackgroundCredit className="absolute bottom-2 right-2 md:bottom-4 md:right-4 z-20" />
     </section>
   );
 };

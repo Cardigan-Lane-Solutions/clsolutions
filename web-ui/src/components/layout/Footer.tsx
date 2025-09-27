@@ -4,9 +4,16 @@ import { brandConfig } from '../../config/brand.config';
 import Container from '../ui/Container';
 import { cn } from '../../utils/styles';
 
-const Footer: React.FC<FooterProps> = ({
+interface ExtendedFooterProps extends FooterProps {
+  onNavigate?: (to: string) => void;
+  currentPath?: string;
+}
+
+const Footer: React.FC<ExtendedFooterProps> = ({
   navigation,
   className = '',
+  onNavigate,
+  currentPath,
 }) => {
   // Get company info from brand config
   const companyInfo = {
@@ -42,11 +49,18 @@ const Footer: React.FC<FooterProps> = ({
   const currentYear = new Date().getFullYear();
 
   const scrollToSection = (href: string) => {
-    if (href.startsWith('#')) {
+    if (!href.startsWith('#')) return;
+    const performScroll = () => {
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
+    };
+    if (currentPath === '/privacy' && onNavigate) {
+      onNavigate('/');
+      setTimeout(performScroll, 50);
+    } else {
+      performScroll();
     }
   };
 
@@ -163,12 +177,19 @@ const Footer: React.FC<FooterProps> = ({
                 © {currentYear} {companyInfo.name}. All rights reserved.
               </p>
               <div className="flex space-x-6 mt-4 md:mt-0">
-                <button className="text-secondary-400 hover:text-primary-400 transition-colors duration-200 text-sm">
+                <button
+                  onClick={() => onNavigate ? onNavigate('/privacy') : window.location.assign('/privacy')}
+                  className={`text-secondary-400 hover:text-primary-400 transition-colors duration-200 text-sm ${currentPath === '/privacy' ? 'text-primary-400' : ''}`}
+                >
                   Privacy Policy
                 </button>
-                <button className="text-secondary-400 hover:text-primary-400 transition-colors duration-200 text-sm">
-                  Terms of Service
-                </button>
+                <a
+                  href="/sitemap.xml"
+                  className="text-secondary-400 hover:text-primary-400 transition-colors duration-200 text-sm"
+                  aria-label="Sitemap XML"
+                >
+                  Sitemap
+                </a>
               </div>
             </div>
           </div>
